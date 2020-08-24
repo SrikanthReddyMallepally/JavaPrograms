@@ -1,0 +1,33 @@
+import java.util.*;
+import java.io.*;
+class Main{
+    public static void main(String[] args) throws Exception{
+        BufferedReader br =new BufferedReader(new InputStreamReader(System.in));
+        //reading string
+        
+        String input = br.readLine();
+        StringBuilder sb =new StringBuilder();
+        int len =input.length();
+        int fi,li;
+        //reading x position and y position
+        
+        fi=Integer.parseInt(br.readLine());
+        li=Integer.parseInt(br.readLine());
+        //condition if first given index is y position and 2nd given index is x position
+        if(fi>li){
+            int temp=li;
+            li=fi;
+            fi=temp;
+        }
+        sb.append(input);
+        len=sb.length();
+        while((len-1)<li){
+            sb.append(input);
+            len=sb.length();
+        }
+        if(sb.charAt(fi)==sb.charAt(li))
+            System.out.println("Same");
+        else
+            System.out.println("Not Same");
+    }
+}
