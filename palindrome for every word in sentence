@@ -1,0 +1,32 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        Scanner sc =new Scanner(System.in);
+        String str;
+        str = sc.nextLine();
+        String[] list1 = str.split(" ",10);
+        String[] list2 = reverseString(list1);
+        for(String s:list2)
+            System.out.print(s+" ");
+        int count=0;
+        System.out.print("\n");
+        for(int i=0;i<list1.length;i++)
+        {
+            if(list1[i].length()>1){ //// check if word is more than 2 letters eg:'a' is not a word
+                if(list1[i].equals(list2[i])){
+                    System.out.println(list1[i]);
+                    count++;
+                }
+            }
+        }
+        if( count == 0 )
+            System.out.println("No palindrome");
+    }
+    public static String[] reverseString(String[] list1){
+        String[] t=new String[list1.length];
+        for(int i=0;i< list1.length;i++){
+            t[i]= new StringBuilder(list1[i]).reverse().toString();
+        }
+        return t;
+    }
+}
