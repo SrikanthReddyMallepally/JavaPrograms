@@ -1,0 +1,42 @@
+import java.util.*;
+public class Main{
+    public static void main(String[] args){
+        String str;
+        
+        Scanner sc =new Scanner(System.in);
+        str=sc.next();
+        Map<Character,Integer> hmap = new HashMap<Character,Integer>();
+        
+        for(int i=0;i<str.length();i++)
+        {
+            char letter =str.charAt(i);
+            if( ! hmap.containsKey(letter) ){
+                hmap.put(letter,1);
+            }
+            else{
+                Integer count = hmap.get(letter);
+                hmap.put(letter,++count);
+            }
+        }
+        
+        int min =Integer.MAX_VALUE;
+        List<Character> minKeys =new ArrayList();
+        
+        for(Map.Entry<Character,Integer> entry : hmap.entrySet() ){
+            if(entry.getValue()< min){
+                min=entry.getValue();
+                minKeys.clear();
+            }
+            if(entry.getValue() == min){
+                minKeys.add(entry.getKey());
+            }
+        }
+        ListIterator<Character> litr=null;
+        litr =minKeys.listIterator();
+        while(litr.hasNext())
+        {
+            System.out.println(litr.next());
+        }
+        
+    }
+}
